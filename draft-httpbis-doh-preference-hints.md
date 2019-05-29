@@ -1,5 +1,5 @@
 ---
-title: DoH Preference Hints for HTTP 
+title: DoH Preference Hints for HTTP
 abbrev: DoH Preference Hints
 docname: draft-schinazi-httpbis-doh-preference-hints
 category: exp
@@ -165,8 +165,10 @@ a non-secure transport.
 If a client chooses to act on received DoH-Preference headers, it SHOULD cache
 the server's hostname and the corresponding DoH URI template and lifetime. It
 SHOULD then send subsequent DNS requests for A and AAAA records for that host
-name to the provided DoH server, until the ecache entry expires after the time
-specified in the "max-age" directive.
+name to the provided DoH server, until the cache entry expires after the time
+specified in the "max-age" directive. Any received DoH-Preference header
+replaces and overrides any and all information received in a previous
+DoH-Preference header for the same host name and DoH URI template.
 
 Clients MAY decide to only respect the DoH-Preference header for a subset of
 vetted DoH servers.
