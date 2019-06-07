@@ -198,6 +198,13 @@ has proven ownership of the domain name via its TLS certificate and the DNS
 result that led to the initial connection, impacting future DNS resolutions
 to the same host name has limited security impact.
 
+The potential exists for the DoH-Preference header to be used as a form of web
+tracking. Because a DoH URI is chosen by the server, cached by the client, and
+then subsequently contacted by the client, a uniquely chosen DoH URI could
+identify a client even after other client-side state has expired or been
+removed. Clients SHOULD expire cached DoH URIs when other client state expires
+unless the URIs refer to vetted DoH servers or match common DoH URI patterns
+that preclude client-unique URIs.
 
 # IANA Considerations
 
