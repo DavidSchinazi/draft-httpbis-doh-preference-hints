@@ -159,6 +159,18 @@ of the web server. Web servers MAY send multiple DoH-Preference headers. Web
 servers MUST NOT send the DoH-Preference header in HTTP responses conveyed over
 a non-secure transport.
 
+## Considerations For Choosing a Preferred DoH Server
+
+The choice of DoH server can affect overall performance and responsiveness as
+perceived by the client. Some example considerations in choosing a preferred
+DoH server are:
+
+* A DoH host specified as a host name rather than an IP address will require
+one or more additional DNS resolutions when the cached DNS entries for the
+resolver or resolvers expire.
+* Support for extension mechanisms (e.g. EDNS(0)) may be desired.
+* Clients, particularly mobile device clients, may move frequently move between
+networks that have different network paths to the DoH server.
 
 # Client Behavior
 
@@ -177,6 +189,13 @@ Clients MUST NOT use the contents of the DoH-Preference header to impact how
 it resolves other domain names. Clients MUST ignore the DoH-Preference header
 in HTTP responses conveyed over a non-secure transport.
 
+If the DoH-Preference URI contains a host expressed as a host name rather than
+as an IP address and that host name is resolved via DoH, the DoH server might
+also specify a DoH-Preference header. This means that respecting the DoH server
+recommendation could result in an excessively long chain of DoH queries or a
+loop of DoH servers. Clients SHOULD be capable of detecting a loop or an
+excessively long chain of DoH servers and treat these conditions as a query
+failure.
 
 ## Fallback
 
