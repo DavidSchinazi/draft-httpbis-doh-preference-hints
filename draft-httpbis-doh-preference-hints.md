@@ -83,6 +83,12 @@ the user agent. The header is not prescriptive, it only indicates the server's
 preference to the user. It also only applies to the web server's current
 hostname.
 
+The header defined in this document is not intended to be used as a discovery
+mechanism for clients learning about the existence of new DoH servers. Instead,
+it is intended to be used as an optimization technique for clients with support
+for multiple DoH servers who wish to choose the most performant DNS server for
+a given query.
+
 
 ## Conventions and Definitions
 
@@ -200,7 +206,7 @@ failure.
 ## Fallback
 
 If resolution using the recommended DoH server fails, clients MUST fall back
-and retry their query using their standard DNS resolution mechanism.
+and retry their query using another DNS resolution mechanism.
 
 
 # Internationalization Considerations
@@ -224,6 +230,7 @@ identify a client even after other client-side state has expired or been
 removed. Clients SHOULD expire cached DoH URIs when other client state expires
 unless the URIs refer to vetted DoH servers or match common DoH URI patterns
 that preclude client-unique URIs.
+
 
 # IANA Considerations
 
