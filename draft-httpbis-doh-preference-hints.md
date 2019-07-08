@@ -31,18 +31,6 @@ author:
     organization: Cloudflare
     email: jkipp@cloudflare.com
 
-normative:
-  RFC2119:
-  RFC5234:
-  RFC5890:
-  RFC7405:
-  RFC7230:
-  RFC7234:
-  RFC8174:
-  RFC8484:
-
-informative:
-
 
 --- abstract
 
@@ -94,19 +82,19 @@ a given query.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this
-document are to be interpreted as described in BCP 14 {{RFC2119}} {{RFC8174}}
+document are to be interpreted as described in BCP 14 {{!RFC2119}} {{!RFC8174}}
 when, and only when, they appear in all capitals, as shown here.
 
-This document uses the Augmented BNF defined in {{RFC5234}} and updated by
-{{RFC7405}} along with the "#rule" extension defined in Section 7 of
-{{RFC7230}}. The rules below are defined in {{RFC5234}}, {{RFC7230}}, and
-{{RFC7234}}:
+This document uses the Augmented BNF defined in {{!RFC5234}} and updated by
+{{!RFC7405}} along with the "#rule" extension defined in Section 7 of
+{{!RFC7230}}. The rules below are defined in {{!RFC5234}}, {{!RFC7230}}, and
+{{!RFC7234}}:
 
 ~~~
-  OWS           = <OWS, see {{RFC7230}}, Section 3.2.3>
-  delta-seconds = <delta-seconds; see {{RFC7234}}, Section 1.2.1>
-  quoted-string = <quoted-string, see {{RFC7230}}, Section 3.2.6>
-  token         = <token, see {{RFC7230}}, Section 3.2.6>
+  OWS           = <OWS, see {{!RFC7230}}, Section 3.2.3>
+  delta-seconds = <delta-seconds; see {{!RFC7234}}, Section 1.2.1>
+  quoted-string = <quoted-string, see {{!RFC7230}}, Section 3.2.6>
+  token         = <token, see {{!RFC7230}}, Section 3.2.6>
 ~~~
 
 
@@ -122,7 +110,7 @@ by adding an DoH-Preference header field to responses.
 ~~~
 
 The "doh-uri" component consists of the DoH URI Template as defined in
-{{RFC8484}}.
+{{!RFC8484}}.
 
 Sending multiple DoH-Preference header fields indicates that the server prefers
 multiple DoH servers. They are sent in decreasing order of preference.
@@ -212,7 +200,7 @@ and retry their query using another DNS resolution mechanism.
 # Internationalization Considerations
 
 An internationalized domain name that appears in the header field MUST be
-expressed using A-labels; see Section 2.3.2.1 of {{RFC5890}}.
+expressed using A-labels; see Section 2.3.2.1 of {{!RFC5890}}.
 
 
 # Security Considerations
