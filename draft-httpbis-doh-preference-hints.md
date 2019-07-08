@@ -120,7 +120,7 @@ multiple DoH servers. They are sent in decreasing order of preference.
 
 The REQUIRED "max-age" directive specifies the number of seconds, after the
 reception of the DoH-Preference header field, during which the user agent
-cache's the server's DoH preferences.
+caches the server's DoH preferences.
 
 The syntax of the max-age directive's REQUIRED value (after quoted-string
 unescaping, if necessary) is defined as:
@@ -163,7 +163,7 @@ DoH server are:
 one or more additional DNS resolutions when the cached DNS entries for the
 resolver or resolvers expire.
 * Support for extension mechanisms (e.g. EDNS(0)) may be desired.
-* Clients, particularly mobile device clients, may move frequently move between
+* Clients, particularly mobile device clients, may frequently move between
 networks that have different network paths to the DoH server.
 
 # Client Behavior
