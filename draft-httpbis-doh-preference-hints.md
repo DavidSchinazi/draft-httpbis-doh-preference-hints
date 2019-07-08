@@ -41,7 +41,7 @@ Content Delivery Network (CDN) should be able to resolve names hosted by that
 CDN with good performance but might take longer to resolve names provided by
 other CDNs, or might provide suboptimal results if that CDN is using DNS-based
 load balancing and returns different address records depending or where the DNS
-query orignated from. This document attempts to lessen these issues by allowing
+query originated from. This document attempts to lessen these issues by allowing
 the web server to indicate to the client which DoH server can best resolve its
 addresses. This document defines an HTTP header field that enables web host
 operators to inform user agents of the preferred DoH servers to use for
@@ -59,7 +59,7 @@ Content Delivery Network (CDN) should be able to resolve names hosted by that
 CDN with good performance but might take longer to resolve names provided by
 other CDNs, or might provide suboptimal results if that CDN is using DNS-based
 load balancing and returns different address records depending or where the DNS
-query orignated from. This document attempts to lessen these issues by allowing
+query originated from. This document attempts to lessen these issues by allowing
 the web server to indicate to the client which DoH server can best resolve its
 addresses. This document defines an HTTP header field that enables web host
 operators to inform user agents of the preferred DoH servers to use for
