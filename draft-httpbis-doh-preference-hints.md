@@ -216,8 +216,8 @@ tracking. Because a DoH URI is chosen by the server, cached by the client, and
 then subsequently contacted by the client, a uniquely chosen DoH URI could
 identify a client even after other client-side state has expired or been
 removed. Clients SHOULD expire cached DoH URIs when other client state expires
-unless the URIs refer to vetted DoH servers or match common DoH URI patterns
-that preclude client-unique URIs.
+or is cleared by the user unless the URIs refer to vetted DoH servers or match
+common DoH URI patterns that preclude client-unique URIs.
 
 
 # IANA Considerations
