@@ -1,0 +1,607 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head profile="http://www.w3.org/2006/03/hcard http://dublincore.org/documents/2008/08/04/dc-html/">
+  <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+
+  <title>DoH Preference Hints for HTTP</title>
+
+  
+<style type="text/css">/*<![CDATA[*/
+
+body {
+  font: 16px "Helvetica Neue","Open Sans",Helvetica,Calibri,sans-serif;
+  color: #333;
+  font-size-adjust: 0.5;
+  line-height: 24px;
+  margin: 75px auto;
+  max-width: 624px;
+  padding: 0 5px;
+}
+
+.title, .filename, h1, h2, h3, h4, h5 {
+  font: 16px "Roboto Condensed","Helvetica Neue","Open Sans",Helvetica,Calibri,sans-serif;
+  font-size-adjust: 0.5;
+  font-weight: bold;
+  color: #333;
+  line-height: 100%;
+  margin: 1.2em 0 0.3em;
+}
+.title, #rfc\.title h1 { font-size: 32px; }
+h1, section h1, h2, section h2, section h3, nav h2 { font-size: 20px; }
+h3, section h4, h4, section h5 { font-size: 16px; }
+h1 a[href], h2 a[href], h3 a[href], h4 a[href] {
+  color: #333;
+}
+
+table {
+  margin-left: 0em;
+  border-collapse: collapse;
+}
+th {
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+}
+td {
+  border-top: 1px solid #ddd;
+  vertical-align: top;
+}
+tr:nth-child(2n+1) > td,
+tr:nth-child(2n+1) > th {
+  background-color: #f9f9f9;
+}
+td.reference {
+  max-width: 200px;
+  border-top: none;
+  padding-right: 1em;
+}
+.right {
+  text-align: right;
+}
+
+
+table.header, table#rfc\.headerblock {
+  width: 100%;
+}
+table.header td, table#rfc\.headerblock td {
+  border: none;
+  background-color: transparent;
+  color: black;
+  padding: 0;
+}
+.filename {
+  display: block;
+  color: rgb(119, 119, 119);
+  font-size: 20px;
+  font-weight: normal;
+  line-height: 100%;
+  margin: 10px 0 32px;
+}
+#rfc\.abstract+p, #rfc\.abstract+p code, #rfc\.abstract+p samp, #rfc\.abstract+p tt {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+samp, tt, code, pre, span.tt {
+  font-size: 13.5px;
+  font-family: Consolas, monospace;
+  font-size-adjust: none;
+}
+pre {
+  background-color: #eee;
+  border: 1px solid #ddd;
+  overflow-x: auto;
+  padding: 5px;
+  margin: 5px;
+}
+.figure, caption {
+  font-style: italic;
+  margin: 0 1.5em;
+  text-align: left;
+}
+
+address {
+  margin: 16px 2px;
+  line-height: 20px;
+}
+.vcard {
+  font-style: normal;
+}
+.vcardline {
+  display: block;
+}
+.vcardline .fn, address b {
+  font-weight: normal;
+}
+.vcardline .hidden {
+  display: none;
+}
+
+dl {
+  margin-left: 1em;
+}
+dl.dl-horizontal: {
+  margin-left: 0;
+}
+dl > dt {
+  float: left;
+  margin-right: 1em;
+}
+dl.nohang > dt {
+  float: none;
+}
+dl > dd {
+  margin-bottom: .5em;
+}
+dl.compact > dd {
+  margin-bottom: 0em;
+}
+dl > dd > dl {
+  margin-top: 0.5em;
+  margin-bottom: 0em;
+}
+ul.empty {
+  list-style-type: none;
+}
+ul.empty li {
+  margin-top: .5em;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #eee;
+}
+hr.noprint {
+  display: none;
+}
+
+a {
+  text-decoration: none;
+}
+a[href] {
+  color: #2a6496;
+}
+a[href]:hover {
+  background-color: #eee;
+}
+
+p, ol, ul, li {
+  padding: 0;
+}
+p {
+  margin: 0.5em 0;
+}
+ol, ul {
+  margin: 0.2em 0 0.2em 2em;
+}
+li {
+  margin: 0.2em 0;
+}
+address {
+  font-style: normal;
+}
+
+ul.toc ul {
+  margin: 0 0 0 2em;
+}
+ul.toc li {
+  list-style: none;
+  margin: 0;
+}
+
+@media screen and (min-width: 924px) {
+  body {
+    padding-right: 350px;
+  }
+  body>ul.toc, body>#rfc\.toc {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    right: calc(50vw - 500px);
+    width: 300px;
+    z-index: 1;
+    overflow: auto;
+    overscroll-behavior: contain;
+  }
+  body>#rfc\.toc {
+    top: 55px;
+  }
+  body>ul.toc {
+    top: 100px;
+  }
+
+  ul.toc {
+    margin: 0 0 0 4px;
+    font-size: 12px;
+    line-height: 20px;
+  }
+  ul.toc ul {
+    margin-left: 1.2em;
+  }
+}
+
+.github-fork-ribbon-wrapper {
+  display: none;
+}
+@media screen and (min-width: 800px) {
+  /* "Fork me on GitHub" CSS ribbon based on
+   * https://github.com/simonwhitaker/github-fork-ribbon-css
+   */
+  .github-fork-ribbon {
+    position: absolute;
+    padding: 2px 0;
+    background-color: #a00;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15));
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
+    font: 700 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+    pointer-events: auto;
+
+    top: 38px;
+    right: -45px;
+
+    transform: rotate(45deg);
+  }
+
+  .github-fork-ribbon a[href],
+  .github-fork-ribbon a[href]:hover {
+    color: #fff;
+    background-color: transparent;
+    text-decoration: none;
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.5);
+    text-align: center;
+
+    width: 190px;
+    line-height: 18px;
+
+    display: inline-block;
+    padding: 2px 0;
+
+    border: 1.5px dotted #fff;
+    border-color: rgba(255, 255, 255, 0.6);
+  }
+
+  .github-fork-ribbon-wrapper {
+    display: block;
+    width: 130px;
+    height: 130px;
+    position: absolute;
+    overflow: hidden;
+    top: 0; right: 0;
+    z-index: 2;
+    pointer-events: none;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .github-fork-ribbon-wrapper {
+    position: fixed;
+  }
+/*]]>*/</style>
+<meta name="viewport" content="initial-scale=1.0">
+
+
+  <link href="#rfc.toc" rel="Contents">
+<link href="#rfc.section.1" rel="Chapter" title="1 Introduction">
+<link href="#rfc.section.1.1" rel="Chapter" title="1.1 Conventions and Definitions">
+<link href="#rfc.section.2" rel="Chapter" title="2 The DoH-Preference Header Field">
+<link href="#rfc.section.2.1" rel="Chapter" title="2.1 The max-age Directive">
+<link href="#rfc.section.2.2" rel="Chapter" title="2.2 Examples">
+<link href="#rfc.section.3" rel="Chapter" title="3 Server Behavior">
+<link href="#rfc.section.3.1" rel="Chapter" title="3.1 Considerations For Choosing a Preferred DoH Server">
+<link href="#rfc.section.4" rel="Chapter" title="4 Client Behavior">
+<link href="#rfc.section.4.1" rel="Chapter" title="4.1 Fallback">
+<link href="#rfc.section.5" rel="Chapter" title="5 Internationalization Considerations">
+<link href="#rfc.section.6" rel="Chapter" title="6 Security Considerations">
+<link href="#rfc.section.7" rel="Chapter" title="7 IANA Considerations">
+<link href="#rfc.references" rel="Chapter" title="8 Normative References">
+<link href="#rfc.acknowledgments" rel="Chapter">
+<link href="#rfc.authors" rel="Chapter">
+
+
+  <meta name="generator" content="xml2rfc version 2.19.0 - https://tools.ietf.org/tools/xml2rfc" />
+  <link rel="schema.dct" href="http://purl.org/dc/terms/" />
+
+  <meta name="dct.creator" content="Schinazi, D., Sullivan, N., and J. Kipp" />
+  <meta name="dct.identifier" content="urn:ietf:id:draft-schinazi-httpbis-doh-preference-hints" />
+  <meta name="dct.issued" scheme="ISO8601" content="2019-11-01" />
+  <meta name="dct.abstract" content="When using a publicly available DNS-over-HTTPS (DoH) server, some clients may suffer poor performance when the authoritative DNS server is located far from the DoH server. For example, a publicly available DoH server provided by a Content Delivery Network (CDN) should be able to resolve names hosted by that CDN with good performance but might take longer to resolve names provided by other CDNs, or might provide suboptimal results if that CDN is using DNS-based load balancing and returns different address records depending or where the DNS query originated from. This document attempts to lessen these issues by allowing the web server to indicate to the client which DoH server can best resolve its addresses. This document defines an HTTP header field that enables web host operators to inform user agents of the preferred DoH servers to use for subsequent DNS lookups for the host&#8217;s domain." />
+  <meta name="description" content="When using a publicly available DNS-over-HTTPS (DoH) server, some clients may suffer poor performance when the authoritative DNS server is located far from the DoH server. For example, a publicly available DoH server provided by a Content Delivery Network (CDN) should be able to resolve names hosted by that CDN with good performance but might take longer to resolve names provided by other CDNs, or might provide suboptimal results if that CDN is using DNS-based load balancing and returns different address records depending or where the DNS query originated from. This document attempts to lessen these issues by allowing the web server to indicate to the client which DoH server can best resolve its addresses. This document defines an HTTP header field that enables web host operators to inform user agents of the preferred DoH servers to use for subsequent DNS lookups for the host&#8217;s domain." />
+
+</head>
+
+<body>
+
+  <table class="header">
+    <tbody>
+    
+    	<tr>
+<td class="left">Network Working Group</td>
+<td class="right">D. Schinazi</td>
+</tr>
+<tr>
+<td class="left">Internet-Draft</td>
+<td class="right">Google LLC</td>
+</tr>
+<tr>
+<td class="left">Intended status: Experimental</td>
+<td class="right">N. Sullivan</td>
+</tr>
+<tr>
+<td class="left">Expires: May 4, 2020</td>
+<td class="right">J. Kipp</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">Cloudflare</td>
+</tr>
+<tr>
+<td class="left"></td>
+<td class="right">November 01, 2019</td>
+</tr>
+
+    	
+    </tbody>
+  </table>
+
+  <p class="title">DoH Preference Hints for HTTP<br />
+  <span class="filename">draft-schinazi-httpbis-doh-preference-hints</span></p>
+  
+  <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
+<p>When using a publicly available DNS-over-HTTPS (DoH) server, some clients may suffer poor performance when the authoritative DNS server is located far from the DoH server. For example, a publicly available DoH server provided by a Content Delivery Network (CDN) should be able to resolve names hosted by that CDN with good performance but might take longer to resolve names provided by other CDNs, or might provide suboptimal results if that CDN is using DNS-based load balancing and returns different address records depending or where the DNS query originated from. This document attempts to lessen these issues by allowing the web server to indicate to the client which DoH server can best resolve its addresses. This document defines an HTTP header field that enables web host operators to inform user agents of the preferred DoH servers to use for subsequent DNS lookups for the host&#8217;s domain.</p>
+<h1 id="rfc.status"><a href="#rfc.status">Status of This Memo</a></h1>
+<p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
+<p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
+<p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
+<p>This Internet-Draft will expire on May 4, 2020.</p>
+<h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
+<p>Copyright (c) 2019 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
+<p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
+
+  
+  <hr class="noprint" />
+  <h1 class="np" id="rfc.toc"><a href="#rfc.toc">Table of Contents</a></h1>
+  <ul class="toc">
+
+  	<li>1.   <a href="#rfc.section.1">Introduction</a>
+</li>
+<ul><li>1.1.   <a href="#rfc.section.1.1">Conventions and Definitions</a>
+</li>
+</ul><li>2.   <a href="#rfc.section.2">The DoH-Preference Header Field</a>
+</li>
+<ul><li>2.1.   <a href="#rfc.section.2.1">The max-age Directive</a>
+</li>
+<li>2.2.   <a href="#rfc.section.2.2">Examples</a>
+</li>
+</ul><li>3.   <a href="#rfc.section.3">Server Behavior</a>
+</li>
+<ul><li>3.1.   <a href="#rfc.section.3.1">Considerations For Choosing a Preferred DoH Server</a>
+</li>
+</ul><li>4.   <a href="#rfc.section.4">Client Behavior</a>
+</li>
+<ul><li>4.1.   <a href="#rfc.section.4.1">Fallback</a>
+</li>
+</ul><li>5.   <a href="#rfc.section.5">Internationalization Considerations</a>
+</li>
+<li>6.   <a href="#rfc.section.6">Security Considerations</a>
+</li>
+<li>7.   <a href="#rfc.section.7">IANA Considerations</a>
+</li>
+<li>8.   <a href="#rfc.references">Normative References</a>
+</li>
+<li><a href="#rfc.acknowledgments">Acknowledgments</a>
+</li>
+<li><a href="#rfc.authors">Authors' Addresses</a>
+</li>
+
+
+  </ul>
+
+  <h1 id="rfc.section.1">
+<a href="#rfc.section.1">1.</a> <a href="#introduction" id="introduction">Introduction</a>
+</h1>
+<p id="rfc.section.1.p.1">When using a publicly available DNS-over-HTTPS (DoH) server, some clients may suffer poor performance when the authoritative DNS server is located far from the DoH server. For example, a publicly available DoH server provided by a Content Delivery Network (CDN) should be able to resolve names hosted by that CDN with good performance but might take longer to resolve names provided by other CDNs, or might provide suboptimal results if that CDN is using DNS-based load balancing and returns different address records depending or where the DNS query originated from. This document attempts to lessen these issues by allowing the web server to indicate to the client which DoH server can best resolve its addresses. This document defines an HTTP header field that enables web host operators to inform user agents of the preferred DoH servers to use for subsequent DNS lookups for the host&#8217;s domain.</p>
+<p id="rfc.section.1.p.2">When a web server wishes its client to use a specific DoH server to resolve its addresses, it can send the DoH-Preference header to indicate that preference to the user agent. The header is not prescriptive, it only indicates the server&#8217;s preference to the user. It also only applies to the web server&#8217;s current hostname.</p>
+<p id="rfc.section.1.p.3">The header defined in this document is not intended to be used as a discovery mechanism for clients learning about the existence of new DoH servers. Instead, it is intended to be used as an optimization technique for clients with support for multiple DoH servers who wish to choose the most performant DNS server for a given query.</p>
+<h1 id="rfc.section.1.1">
+<a href="#rfc.section.1.1">1.1.</a> <a href="#conventions-and-definitions" id="conventions-and-definitions">Conventions and Definitions</a>
+</h1>
+<p id="rfc.section.1.1.p.1">The key words &#8220;MUST&#8221;, &#8220;MUST NOT&#8221;, &#8220;REQUIRED&#8221;, &#8220;SHALL&#8221;, &#8220;SHALL NOT&#8221;, &#8220;SHOULD&#8221;, &#8220;SHOULD NOT&#8221;, &#8220;RECOMMENDED&#8221;, &#8220;NOT RECOMMENDED&#8221;, &#8220;MAY&#8221;, and &#8220;OPTIONAL&#8221; in this document are to be interpreted as described in BCP 14 <a href="#RFC2119" class="xref">[RFC2119]</a> <a href="#RFC8174" class="xref">[RFC8174]</a> when, and only when, they appear in all capitals, as shown here.</p>
+<p id="rfc.section.1.1.p.2">This document uses the Augmented BNF defined in <a href="#RFC5234" class="xref">[RFC5234]</a> and updated by <a href="#RFC7405" class="xref">[RFC7405]</a> along with the &#8220;#rule&#8221; extension defined in Section 7 of <a href="#RFC7230" class="xref">[RFC7230]</a>. The rules below are defined in <a href="#RFC5234" class="xref">[RFC5234]</a>, <a href="#RFC7230" class="xref">[RFC7230]</a>, and <a href="#RFC7234" class="xref">[RFC7234]</a>:</p>
+<pre>
+  OWS           = &lt;OWS, see {{RFC7230}}, Section 3.2.3&gt;
+  delta-seconds = &lt;delta-seconds; see {{RFC7234}}, Section 1.2.1&gt;
+  quoted-string = &lt;quoted-string, see {{RFC7230}}, Section 3.2.6&gt;
+  token         = &lt;token, see {{RFC7230}}, Section 3.2.6&gt;
+</pre>
+<h1 id="rfc.section.2">
+<a href="#rfc.section.2">2.</a> <a href="#doh-header" id="doh-header">The DoH-Preference Header Field</a>
+</h1>
+<p id="rfc.section.2.p.1">An HTTPS origin can indicate its preference regarding DoH servers to the client by adding an DoH-Preference header field to responses.</p>
+<pre>
+  DoH-Preference = doh-uri *( OWS ";" OWS parameter )
+  doh-uri        = quoted-string
+  parameter      = token "=" ( token / quoted-string )
+</pre>
+<p id="rfc.section.2.p.2">The &#8220;doh-uri&#8221; component consists of the DoH URI Template as defined in <a href="#RFC8484" class="xref">[RFC8484]</a>.</p>
+<p id="rfc.section.2.p.3">Sending multiple DoH-Preference header fields indicates that the server prefers multiple DoH servers. They are sent in decreasing order of preference.</p>
+<h1 id="rfc.section.2.1">
+<a href="#rfc.section.2.1">2.1.</a> <a href="#the-max-age-directive" id="the-max-age-directive">The max-age Directive</a>
+</h1>
+<p id="rfc.section.2.1.p.1">The REQUIRED &#8220;max-age&#8221; directive specifies the number of seconds, after the reception of the DoH-Preference header field, during which the user agent caches the server&#8217;s DoH preferences.</p>
+<p id="rfc.section.2.1.p.2">The syntax of the max-age directive&#8217;s REQUIRED value (after quoted-string unescaping, if necessary) is defined as:</p>
+<pre>
+    max-age-value = delta-seconds
+</pre>
+<p id="rfc.section.2.1.p.3">A max-age value of zero (i.e., &#8220;max-age=0&#8221;) signals the user agent to remove the DoH URI template from its cache.</p>
+<h1 id="rfc.section.2.2">
+<a href="#rfc.section.2.2">2.2.</a> <a href="#examples" id="examples">Examples</a>
+</h1>
+<p id="rfc.section.2.2.p.1">The header below indicates that the user agent should consider querying DNS results for the web server&#8217;s hostname using &#8220;dnsserver.example.net&#8221; for approximately six months. (Lines are folded to fit.)</p>
+<pre>
+DoH-Preference: "https://dnsserver.example.net/dns-query{?dns}";
+    max-age=15768000
+</pre>
+<h1 id="rfc.section.3">
+<a href="#rfc.section.3">3.</a> <a href="#server-behavior" id="server-behavior">Server Behavior</a>
+</h1>
+<p id="rfc.section.3.p.1">Web servers MAY send a DoH-Preference header to indicate to clients that it would prefer they use that DoH server when resolving addresses for the hostname of the web server. Web servers MAY send multiple DoH-Preference headers. Web servers MUST NOT send the DoH-Preference header in HTTP responses conveyed over a non-secure transport.</p>
+<h1 id="rfc.section.3.1">
+<a href="#rfc.section.3.1">3.1.</a> <a href="#considerations-for-choosing-a-preferred-doh-server" id="considerations-for-choosing-a-preferred-doh-server">Considerations For Choosing a Preferred DoH Server</a>
+</h1>
+<p id="rfc.section.3.1.p.1">The choice of DoH server can affect overall performance and responsiveness as perceived by the client. Some example considerations in choosing a preferred DoH server are:</p>
+<p></p>
+
+<ul>
+<li>A DoH host specified as a host name rather than an IP address will require one or more additional DNS resolutions when the cached DNS entries for the resolver or resolvers expire.</li>
+<li>Support for extension mechanisms (e.g. EDNS(0)) may be desired.</li>
+<li>Clients, particularly mobile device clients, may frequently move between networks that have different network paths to the DoH server.</li>
+</ul>
+<h1 id="rfc.section.4">
+<a href="#rfc.section.4">4.</a> <a href="#client-behavior" id="client-behavior">Client Behavior</a>
+</h1>
+<p id="rfc.section.4.p.1">If a client chooses to act on received DoH-Preference headers, it SHOULD cache the server&#8217;s hostname and the corresponding DoH URI template and lifetime. It SHOULD then send subsequent DNS requests for A and AAAA records for that host name to the provided DoH server, until the cache entry expires after the time specified in the &#8220;max-age&#8221; directive. Any received DoH-Preference header replaces and overrides any and all information received in a previous DoH-Preference header for the same host name and DoH URI template.</p>
+<p id="rfc.section.4.p.2">Clients MAY decide to only respect the DoH-Preference header for a subset of vetted DoH servers.</p>
+<p id="rfc.section.4.p.3">Clients MUST NOT use the contents of the DoH-Preference header to impact how it resolves other domain names. Clients MUST ignore the DoH-Preference header in HTTP responses conveyed over a non-secure transport.</p>
+<p id="rfc.section.4.p.4">If the DoH-Preference URI contains a host expressed as a host name rather than as an IP address and that host name is resolved via DoH, the DoH server might also specify a DoH-Preference header. This means that respecting the DoH server recommendation could result in an excessively long chain of DoH queries or a loop of DoH servers. Clients SHOULD be capable of detecting a loop or an excessively long chain of DoH servers and treat these conditions as a query failure.</p>
+<h1 id="rfc.section.4.1">
+<a href="#rfc.section.4.1">4.1.</a> <a href="#fallback" id="fallback">Fallback</a>
+</h1>
+<p id="rfc.section.4.1.p.1">If resolution using the recommended DoH server fails, clients MUST fall back and retry their query using another DNS resolution mechanism.</p>
+<h1 id="rfc.section.5">
+<a href="#rfc.section.5">5.</a> <a href="#internationalization-considerations" id="internationalization-considerations">Internationalization Considerations</a>
+</h1>
+<p id="rfc.section.5.p.1">An internationalized domain name that appears in the header field MUST be expressed using A-labels; see Section 2.3.2.1 of <a href="#RFC5890" class="xref">[RFC5890]</a>.</p>
+<h1 id="rfc.section.6">
+<a href="#rfc.section.6">6.</a> <a href="#security-considerations" id="security-considerations">Security Considerations</a>
+</h1>
+<p id="rfc.section.6.p.1">The DoH-Preference header allows a web server to impact how a user agent resolves DNS A and AAAA records for its own host name. Since the web server has proven ownership of the domain name via its TLS certificate and the DNS result that led to the initial connection, impacting future DNS resolutions to the same host name has limited security impact.</p>
+<p id="rfc.section.6.p.2">The potential exists for the DoH-Preference header to be used as a form of web tracking. Because a DoH URI is chosen by the server, cached by the client, and then subsequently contacted by the client, a uniquely chosen DoH URI could identify a client even after other client-side state has expired or been removed. Clients SHOULD expire cached DoH URIs when other client state expires or is cleared by the user unless the URIs refer to vetted DoH servers or match common DoH URI patterns that preclude client-unique URIs.</p>
+<h1 id="rfc.section.7">
+<a href="#rfc.section.7">7.</a> <a href="#iana-considerations" id="iana-considerations">IANA Considerations</a>
+</h1>
+<p id="rfc.section.7.p.1">This document, if approved, requests IANA to register the DoH-Preference header in the &#8220;Permanent Message Header Field Names&#8221; registry maintained at <a href="https://www.iana.org/assignments/message-headers/">https://www.iana.org/assignments/message-headers/</a>.</p>
+<pre>
+  +-------------------+----------+----------+------------+
+  | Header Field Name | Protocol | Status   | Reference  |
+  +-------------------+----------+----------+------------+
+  | DoH-Preference    | http     | standard | Section 2  |
+  +-------------------+----------+----------+------------+
+</pre>
+<p id="rfc.section.7.p.2">The change controller is: &#8220;IETF (iesg@ietf.org) &#8211; Internet Engineering Task Force&#8221;.</p>
+<h1 id="rfc.references">
+<a href="#rfc.references">8.</a> Normative References</h1>
+<table><tbody>
+<tr>
+<td class="reference"><b id="RFC2119">[RFC2119]</b></td>
+<td class="top">
+<a>Bradner, S.</a>, "<a href="https://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>", BCP 14, RFC 2119, DOI 10.17487/RFC2119, March 1997.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC5234">[RFC5234]</b></td>
+<td class="top">
+<a>Crocker, D.</a> and <a>P. Overell</a>, "<a href="https://tools.ietf.org/html/rfc5234">Augmented BNF for Syntax Specifications: ABNF</a>", STD 68, RFC 5234, DOI 10.17487/RFC5234, January 2008.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC5890">[RFC5890]</b></td>
+<td class="top">
+<a>Klensin, J.</a>, "<a href="https://tools.ietf.org/html/rfc5890">Internationalized Domain Names for Applications (IDNA): Definitions and Document Framework</a>", RFC 5890, DOI 10.17487/RFC5890, August 2010.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC7230">[RFC7230]</b></td>
+<td class="top">
+<a>Fielding, R.</a> and <a>J. Reschke</a>, "<a href="https://tools.ietf.org/html/rfc7230">Hypertext Transfer Protocol (HTTP/1.1): Message Syntax and Routing</a>", RFC 7230, DOI 10.17487/RFC7230, June 2014.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC7234">[RFC7234]</b></td>
+<td class="top">
+<a>Fielding, R.</a>, <a>Nottingham, M.</a> and <a>J. Reschke</a>, "<a href="https://tools.ietf.org/html/rfc7234">Hypertext Transfer Protocol (HTTP/1.1): Caching</a>", RFC 7234, DOI 10.17487/RFC7234, June 2014.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC7405">[RFC7405]</b></td>
+<td class="top">
+<a>Kyzivat, P.</a>, "<a href="https://tools.ietf.org/html/rfc7405">Case-Sensitive String Support in ABNF</a>", RFC 7405, DOI 10.17487/RFC7405, December 2014.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC8174">[RFC8174]</b></td>
+<td class="top">
+<a>Leiba, B.</a>, "<a href="https://tools.ietf.org/html/rfc8174">Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</a>", BCP 14, RFC 8174, DOI 10.17487/RFC8174, May 2017.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC8484">[RFC8484]</b></td>
+<td class="top">
+<a>Hoffman, P.</a> and <a>P. McManus</a>, "<a href="https://tools.ietf.org/html/rfc8484">DNS Queries over HTTPS (DoH)</a>", RFC 8484, DOI 10.17487/RFC8484, October 2018.</td>
+</tr>
+</tbody></table>
+<h1 id="rfc.acknowledgments"><a href="#rfc.acknowledgments">Acknowledgments</a></h1>
+<p id="rfc.section.A.p.1">The authors would like to thank many members of the IETF community, as this document is the fruit of many hallway conversations.</p>
+<h1 id="rfc.authors"><a href="#rfc.authors">Authors' Addresses</a></h1>
+<div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">David Schinazi</span> 
+	  <span class="n hidden">
+		<span class="family-name">Schinazi</span>
+	  </span>
+	</span>
+	<span class="org vcardline">Google LLC</span>
+	<span class="adr">
+	  <span class="vcardline">1600 Amphitheatre Parkway</span>
+
+	  <span class="vcardline">
+		<span class="locality">Mountain View, California 94043</span>,  
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline">United States of America</span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:dschinazi.ietf@gmail.com">dschinazi.ietf@gmail.com</a></span>
+
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Nick Sullivan</span> 
+	  <span class="n hidden">
+		<span class="family-name">Sullivan</span>
+	  </span>
+	</span>
+	<span class="org vcardline">Cloudflare</span>
+	<span class="adr">
+	  
+	  <span class="vcardline">
+		<span class="locality"></span> 
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline"></span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:nick@cloudflare.com">nick@cloudflare.com</a></span>
+
+  </address>
+</div><div class="avoidbreak">
+  <address class="vcard">
+	<span class="vcardline">
+	  <span class="fn">Jesse Kipp</span> 
+	  <span class="n hidden">
+		<span class="family-name">Kipp</span>
+	  </span>
+	</span>
+	<span class="org vcardline">Cloudflare</span>
+	<span class="adr">
+	  
+	  <span class="vcardline">
+		<span class="locality"></span> 
+		<span class="region"></span>
+		<span class="code"></span>
+	  </span>
+	  <span class="country-name vcardline"></span>
+	</span>
+	<span class="vcardline">EMail: <a href="mailto:jkipp@cloudflare.com">jkipp@cloudflare.com</a></span>
+
+  </address>
+</div>
+
+</body>
+</html>
+
