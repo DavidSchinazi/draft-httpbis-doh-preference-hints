@@ -5,9 +5,9 @@
 Network Working Group                                        D. Schinazi
 Internet-Draft                                                Google LLC
 Intended status: Experimental                                N. Sullivan
-Expires: May 4, 2020                                             J. Kipp
+Expires: 12 January 2021                                         J. Kipp
                                                               Cloudflare
-                                                       November 01, 2019
+                                                            11 July 2020
 
 
                      DoH Preference Hints for HTTP
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on May 4, 2020.
+   This Internet-Draft will expire on 12 January 2021.
 
 
 
@@ -53,25 +53,24 @@ Status of This Memo
 
 
 
-Schinazi, et al.           Expires May 4, 2020                  [Page 1]
+Schinazi, et al.         Expires 12 January 2021                [Page 1]
 
-Internet-Draft            DoH Preference Hints             November 2019
+Internet-Draft            DoH Preference Hints                 July 2020
 
 
 Copyright Notice
 
-   Copyright (c) 2019 IETF Trust and the persons identified as the
+   Copyright (c) 2020 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
-   Provisions Relating to IETF Documents
-   (https://trustee.ietf.org/license-info) in effect on the date of
-   publication of this document.  Please review these documents
-   carefully, as they describe your rights and restrictions with respect
-   to this document.  Code Components extracted from this document must
-   include Simplified BSD License text as described in Section 4.e of
-   the Trust Legal Provisions and are provided without warranty as
-   described in the Simplified BSD License.
+   Provisions Relating to IETF Documents (https://trustee.ietf.org/
+   license-info) in effect on the date of publication of this document.
+   Please review these documents carefully, as they describe your rights
+   and restrictions with respect to this document.  Code Components
+   extracted from this document must include Simplified BSD License text
+   as described in Section 4.e of the Trust Legal Provisions and are
+   provided without warranty as described in the Simplified BSD License.
 
 Table of Contents
 
@@ -87,9 +86,7 @@ Table of Contents
    5.  Internationalization Considerations . . . . . . . . . . . . .   5
    6.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
    7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
-   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   6
-     8.1.  Normative References  . . . . . . . . . . . . . . . . . .   6
-     8.2.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .   7
+   8.  Normative References  . . . . . . . . . . . . . . . . . . . .   6
    Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .   7
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   7
 
@@ -106,17 +103,16 @@ Table of Contents
    or where the DNS query originated from.  This document attempts to
    lessen these issues by allowing the web server to indicate to the
    client which DoH server can best resolve its addresses.  This
-
-
-
-Schinazi, et al.           Expires May 4, 2020                  [Page 2]
-
-Internet-Draft            DoH Preference Hints             November 2019
-
-
    document defines an HTTP header field that enables web host operators
    to inform user agents of the preferred DoH servers to use for
    subsequent DNS lookups for the host's domain.
+
+
+
+Schinazi, et al.         Expires 12 January 2021                [Page 2]
+
+Internet-Draft            DoH Preference Hints                 July 2020
+
 
    When a web server wishes its client to use a specific DoH server to
    resolve its addresses, it can send the DoH-Preference header to
@@ -160,19 +156,19 @@ Internet-Draft            DoH Preference Hints             November 2019
    The "doh-uri" component consists of the DoH URI Template as defined
    in [RFC8484].
 
-
-
-
-
-
-Schinazi, et al.           Expires May 4, 2020                  [Page 3]
-
-Internet-Draft            DoH Preference Hints             November 2019
-
-
    Sending multiple DoH-Preference header fields indicates that the
    server prefers multiple DoH servers.  They are sent in decreasing
    order of preference.
+
+
+
+
+
+
+Schinazi, et al.         Expires 12 January 2021                [Page 3]
+
+Internet-Draft            DoH Preference Hints                 July 2020
+
 
 2.1.  The max-age Directive
 
@@ -213,22 +209,22 @@ Internet-Draft            DoH Preference Hints             November 2019
    responsiveness as perceived by the client.  Some example
    considerations in choosing a preferred DoH server are:
 
-   o  A DoH host specified as a host name rather than an IP address will
+   *  A DoH host specified as a host name rather than an IP address will
       require one or more additional DNS resolutions when the cached DNS
       entries for the resolver or resolvers expire.
 
-   o  Support for extension mechanisms (e.g.  EDNS(0)) may be desired.
+   *  Support for extension mechanisms (e.g.  EDNS(0)) may be desired.
 
-
-
-Schinazi, et al.           Expires May 4, 2020                  [Page 4]
-
-Internet-Draft            DoH Preference Hints             November 2019
-
-
-   o  Clients, particularly mobile device clients, may frequently move
+   *  Clients, particularly mobile device clients, may frequently move
       between networks that have different network paths to the DoH
       server.
+
+
+
+Schinazi, et al.         Expires 12 January 2021                [Page 4]
+
+Internet-Draft            DoH Preference Hints                 July 2020
+
 
 4.  Client Behavior
 
@@ -274,16 +270,17 @@ Internet-Draft            DoH Preference Hints             November 2019
    agent resolves DNS A and AAAA records for its own host name.  Since
    the web server has proven ownership of the domain name via its TLS
    certificate and the DNS result that led to the initial connection,
-
-
-
-Schinazi, et al.           Expires May 4, 2020                  [Page 5]
-
-Internet-Draft            DoH Preference Hints             November 2019
-
-
    impacting future DNS resolutions to the same host name has limited
    security impact.
+
+
+
+
+
+Schinazi, et al.         Expires 12 January 2021                [Page 5]
+
+Internet-Draft            DoH Preference Hints                 July 2020
+
 
    The potential exists for the DoH-Preference header to be used as a
    form of web tracking.  Because a DoH URI is chosen by the server,
@@ -299,7 +296,7 @@ Internet-Draft            DoH Preference Hints             November 2019
    This document, if approved, requests IANA to register the DoH-
    Preference header in the "Permanent Message Header Field Names"
    registry maintained at https://www.iana.org/assignments/message-
-   headers/ [1].
+   headers/ (https://www.iana.org/assignments/message-headers/).
 
      +-------------------+----------+----------+------------+
      | Header Field Name | Protocol | Status   | Reference  |
@@ -310,9 +307,7 @@ Internet-Draft            DoH Preference Hints             November 2019
    The change controller is: "IETF (iesg@ietf.org) - Internet
    Engineering Task Force".
 
-8.  References
-
-8.1.  Normative References
+8.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -329,19 +324,19 @@ Internet-Draft            DoH Preference Hints             November 2019
               RFC 5890, DOI 10.17487/RFC5890, August 2010,
               <https://www.rfc-editor.org/info/rfc5890>.
 
-
-
-
-
-Schinazi, et al.           Expires May 4, 2020                  [Page 6]
-
-Internet-Draft            DoH Preference Hints             November 2019
-
-
    [RFC7230]  Fielding, R., Ed. and J. Reschke, Ed., "Hypertext Transfer
               Protocol (HTTP/1.1): Message Syntax and Routing",
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
               <https://www.rfc-editor.org/info/rfc7230>.
+
+
+
+
+
+Schinazi, et al.         Expires 12 January 2021                [Page 6]
+
+Internet-Draft            DoH Preference Hints                 July 2020
+
 
    [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
               Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
@@ -360,10 +355,6 @@ Internet-Draft            DoH Preference Hints             November 2019
               (DoH)", RFC 8484, DOI 10.17487/RFC8484, October 2018,
               <https://www.rfc-editor.org/info/rfc8484>.
 
-8.2.  URIs
-
-   [1] https://www.iana.org/assignments/message-headers/
-
 Acknowledgments
 
    The authors would like to thank many members of the IETF community,
@@ -374,7 +365,7 @@ Authors' Addresses
    David Schinazi
    Google LLC
    1600 Amphitheatre Parkway
-   Mountain View, California 94043
+   Mountain View, California 94043,
    United States of America
 
    Email: dschinazi.ietf@gmail.com
@@ -384,14 +375,6 @@ Authors' Addresses
    Cloudflare
 
    Email: nick@cloudflare.com
-
-
-
-
-
-Schinazi, et al.           Expires May 4, 2020                  [Page 7]
-
-Internet-Draft            DoH Preference Hints             November 2019
 
 
    Jesse Kipp
@@ -406,43 +389,4 @@ Internet-Draft            DoH Preference Hints             November 2019
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Schinazi, et al.           Expires May 4, 2020                  [Page 8]
+Schinazi, et al.         Expires 12 January 2021                [Page 7]
