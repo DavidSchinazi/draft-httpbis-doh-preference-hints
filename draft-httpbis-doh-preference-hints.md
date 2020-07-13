@@ -47,6 +47,10 @@ addresses. This document defines an HTTP header field that enables web host
 operators to inform user agents of the preferred DoH servers to use for
 subsequent DNS lookups for the host's domain.
 
+Discussion of this work is encouraged to happen on the ADD IETF mailing
+list [](add@ietf.org) or on the GitHub repository which contains the draft:
+[](https://github.com/DavidSchinazi/draft-httpbis-doh-preference-hints).
+
 
 --- middle
 
@@ -76,6 +80,10 @@ mechanism for clients learning about the existence of new DoH servers. Instead,
 it is intended to be used as an optimization technique for clients with support
 for multiple DoH servers who wish to choose the most performant DNS server for
 a given query.
+
+Discussion of this work is encouraged to happen on the ADD IETF mailing
+list [](add@ietf.org) or on the GitHub repository which contains the draft:
+[](https://github.com/DavidSchinazi/draft-httpbis-doh-preference-hints).
 
 
 ## Conventions and Definitions
