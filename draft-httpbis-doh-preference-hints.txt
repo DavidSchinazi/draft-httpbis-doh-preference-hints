@@ -5,9 +5,9 @@
 Network Working Group                                        D. Schinazi
 Internet-Draft                                                Google LLC
 Intended status: Experimental                                N. Sullivan
-Expires: 12 January 2021                                         J. Kipp
+Expires: 14 January 2021                                         J. Kipp
                                                               Cloudflare
-                                                            11 July 2020
+                                                            13 July 2020
 
 
                      DoH Preference Hints for HTTP
@@ -30,6 +30,11 @@ Abstract
    to inform user agents of the preferred DoH servers to use for
    subsequent DNS lookups for the host's domain.
 
+   Discussion of this work is encouraged to happen on the ADD IETF
+   mailing list add@ietf.org or on the GitHub repository which contains
+   the draft: https://github.com/DavidSchinazi/draft-httpbis-doh-
+   preference-hints.
+
 Status of This Memo
 
    This Internet-Draft is submitted in full conformance with the
@@ -45,18 +50,15 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 12 January 2021.
 
 
 
-
-
-
-
-Schinazi, et al.         Expires 12 January 2021                [Page 1]
+Schinazi, et al.         Expires 14 January 2021                [Page 1]
 
 Internet-Draft            DoH Preference Hints                 July 2020
 
+
+   This Internet-Draft will expire on 14 January 2021.
 
 Copyright Notice
 
@@ -84,7 +86,7 @@ Table of Contents
    4.  Client Behavior . . . . . . . . . . . . . . . . . . . . . . .   5
      4.1.  Fallback  . . . . . . . . . . . . . . . . . . . . . . . .   5
    5.  Internationalization Considerations . . . . . . . . . . . . .   5
-   6.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .   6
    7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
    8.  Normative References  . . . . . . . . . . . . . . . . . . . .   6
    Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .   7
@@ -104,15 +106,16 @@ Table of Contents
    lessen these issues by allowing the web server to indicate to the
    client which DoH server can best resolve its addresses.  This
    document defines an HTTP header field that enables web host operators
-   to inform user agents of the preferred DoH servers to use for
-   subsequent DNS lookups for the host's domain.
 
 
 
-Schinazi, et al.         Expires 12 January 2021                [Page 2]
+Schinazi, et al.         Expires 14 January 2021                [Page 2]
 
 Internet-Draft            DoH Preference Hints                 July 2020
 
+
+   to inform user agents of the preferred DoH servers to use for
+   subsequent DNS lookups for the host's domain.
 
    When a web server wishes its client to use a specific DoH server to
    resolve its addresses, it can send the DoH-Preference header to
@@ -125,6 +128,11 @@ Internet-Draft            DoH Preference Hints                 July 2020
    DoH servers.  Instead, it is intended to be used as an optimization
    technique for clients with support for multiple DoH servers who wish
    to choose the most performant DNS server for a given query.
+
+   Discussion of this work is encouraged to happen on the ADD IETF
+   mailing list add@ietf.org or on the GitHub repository which contains
+   the draft: https://github.com/DavidSchinazi/draft-httpbis-doh-
+   preference-hints.
 
 1.1.  Conventions and Definitions
 
@@ -153,22 +161,21 @@ Internet-Draft            DoH Preference Hints                 July 2020
      doh-uri        = quoted-string
      parameter      = token "=" ( token / quoted-string )
 
+
+
+
+
+Schinazi, et al.         Expires 14 January 2021                [Page 3]
+
+Internet-Draft            DoH Preference Hints                 July 2020
+
+
    The "doh-uri" component consists of the DoH URI Template as defined
    in [RFC8484].
 
    Sending multiple DoH-Preference header fields indicates that the
    server prefers multiple DoH servers.  They are sent in decreasing
    order of preference.
-
-
-
-
-
-
-Schinazi, et al.         Expires 12 January 2021                [Page 3]
-
-Internet-Draft            DoH Preference Hints                 July 2020
-
 
 2.1.  The max-age Directive
 
@@ -209,6 +216,16 @@ Internet-Draft            DoH Preference Hints                 July 2020
    responsiveness as perceived by the client.  Some example
    considerations in choosing a preferred DoH server are:
 
+
+
+
+
+
+Schinazi, et al.         Expires 14 January 2021                [Page 4]
+
+Internet-Draft            DoH Preference Hints                 July 2020
+
+
    *  A DoH host specified as a host name rather than an IP address will
       require one or more additional DNS resolutions when the cached DNS
       entries for the resolver or resolvers expire.
@@ -218,13 +235,6 @@ Internet-Draft            DoH Preference Hints                 July 2020
    *  Clients, particularly mobile device clients, may frequently move
       between networks that have different network paths to the DoH
       server.
-
-
-
-Schinazi, et al.         Expires 12 January 2021                [Page 4]
-
-Internet-Draft            DoH Preference Hints                 July 2020
-
 
 4.  Client Behavior
 
@@ -264,6 +274,14 @@ Internet-Draft            DoH Preference Hints                 July 2020
    An internationalized domain name that appears in the header field
    MUST be expressed using A-labels; see Section 2.3.2.1 of [RFC5890].
 
+
+
+
+Schinazi, et al.         Expires 14 January 2021                [Page 5]
+
+Internet-Draft            DoH Preference Hints                 July 2020
+
+
 6.  Security Considerations
 
    The DoH-Preference header allows a web server to impact how a user
@@ -272,15 +290,6 @@ Internet-Draft            DoH Preference Hints                 July 2020
    certificate and the DNS result that led to the initial connection,
    impacting future DNS resolutions to the same host name has limited
    security impact.
-
-
-
-
-
-Schinazi, et al.         Expires 12 January 2021                [Page 5]
-
-Internet-Draft            DoH Preference Hints                 July 2020
-
 
    The potential exists for the DoH-Preference header to be used as a
    form of web tracking.  Because a DoH URI is chosen by the server,
@@ -319,6 +328,16 @@ Internet-Draft            DoH Preference Hints                 July 2020
               DOI 10.17487/RFC5234, January 2008,
               <https://www.rfc-editor.org/info/rfc5234>.
 
+
+
+
+
+
+Schinazi, et al.         Expires 14 January 2021                [Page 6]
+
+Internet-Draft            DoH Preference Hints                 July 2020
+
+
    [RFC5890]  Klensin, J., "Internationalized Domain Names for
               Applications (IDNA): Definitions and Document Framework",
               RFC 5890, DOI 10.17487/RFC5890, August 2010,
@@ -328,15 +347,6 @@ Internet-Draft            DoH Preference Hints                 July 2020
               Protocol (HTTP/1.1): Message Syntax and Routing",
               RFC 7230, DOI 10.17487/RFC7230, June 2014,
               <https://www.rfc-editor.org/info/rfc7230>.
-
-
-
-
-
-Schinazi, et al.         Expires 12 January 2021                [Page 6]
-
-Internet-Draft            DoH Preference Hints                 July 2020
-
 
    [RFC7234]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
               Ed., "Hypertext Transfer Protocol (HTTP/1.1): Caching",
@@ -377,6 +387,13 @@ Authors' Addresses
    Email: nick@cloudflare.com
 
 
+
+
+Schinazi, et al.         Expires 14 January 2021                [Page 7]
+
+Internet-Draft            DoH Preference Hints                 July 2020
+
+
    Jesse Kipp
    Cloudflare
 
@@ -389,4 +406,43 @@ Authors' Addresses
 
 
 
-Schinazi, et al.         Expires 12 January 2021                [Page 7]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Schinazi, et al.         Expires 14 January 2021                [Page 8]
