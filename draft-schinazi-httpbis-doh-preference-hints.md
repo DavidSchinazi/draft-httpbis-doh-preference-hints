@@ -1,7 +1,7 @@
 ---
 title: DoH Preference Hints for HTTP
 abbrev: DoH Preference Hints
-docname: draft-schinazi-httpbis-doh-preference-hints
+docname: draft-schinazi-httpbis-doh-preference-hints-latest
 category: exp
 
 ipr: trust200902

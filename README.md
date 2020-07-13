@@ -2,7 +2,7 @@
 
 This is the working area for the individual Internet-Draft, "DoH Preference Hints for HTTP".
 
-* [Editor's Copy](https://DavidSchinazi.github.io/draft-httpbis-doh-preference-hints/#go.draft-httpbis-doh-preference-hints.html)
+* [Editor's Copy](https://davidschinazi.github.io/draft-httpbis-doh-preference-hints/draft-schinazi-httpbis-doh-preference-hints.html)
 * [Individual Draft](https://tools.ietf.org/html/draft-httpbis-doh-preference-hints)
 * [Compare Editor's Copy to Individual Draft](https://DavidSchinazi.github.io/draft-httpbis-doh-preference-hints/#go.draft-httpbis-doh-preference-hints.diff)
 
