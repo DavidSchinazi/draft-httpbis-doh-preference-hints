@@ -11,7 +11,7 @@ Expires: 14 January 2021                                         J. Kipp
 
 
                      DoH Preference Hints for HTTP
-              draft-schinazi-httpbis-doh-preference-hints
+           draft-schinazi-httpbis-doh-preference-hints-latest
 
 Abstract
 
