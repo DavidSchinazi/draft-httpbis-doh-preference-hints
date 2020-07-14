@@ -1,0 +1,430 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2020-07-14T00:15:21.112997+00:00",
+  "repo": "DavidSchinazi/draft-httpbis-doh-preference-hints",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    }
+  ],
+  "issues": [
+    {
+      "number": 4,
+      "id": "MDU6SXNzdWU0NzQ3OTQ2Mzk=",
+      "title": "Use doh preference hints to request client NOT to use doh",
+      "url": "https://github.com/DavidSchinazi/draft-httpbis-doh-preference-hints/issues/4",
+      "state": "OPEN",
+      "author": "DanDruta",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "The current draft allows for the server to specify its own DoH server as an alternative to the one configured in the user-agent/client.\r\nIt should be possible for the server to indicate its choice to opt-out of the use of DoH altogether.\r\nIn this case the client should be able to honor the request by disabling the DoH for the specific domain and use standard DNS mechanisms for subsequent queries.\r\nThis type of configuration should allow the server owner to optimize for certain types of traffic such as on mobile networks. It should help them to predict and improve performance even if they don't plan to run a DoH server of their own.\r\nOn the client side there should be a setting when enabling DoH to select if the user chooses to honor the opt-out request or not including by creating a white-list of servers for which they want this request to be always fulfilled.\r\nThis is a simple granular approach and should allow the user and the server to be in control of the DNS resolution options. ",
+      "createdAt": "2019-07-30T20:02:42Z",
+      "updatedAt": "2019-08-01T00:29:06Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "DavidSchinazi",
+          "authorAssociation": "OWNER",
+          "body": "Perhaps would could encode this hint by sending an empty DoH URI? Do you want to send us a PR that defines this?",
+          "createdAt": "2019-08-01T00:01:35Z",
+          "updatedAt": "2019-08-01T00:01:35Z"
+        },
+        {
+          "author": "DanDruta",
+          "authorAssociation": "NONE",
+          "body": "The empty DoH URI would be the easiest solution. I'm just a bit concerned that can be interpreted by the client as an omission by mistake as opposed to a more explicit OPT-OUT hint.\r\nI will send a pull request with the empty URI.\r\nIn a way we need to be able to define the expected behavior for the client if:\r\n- the DoH URI does not resolve (typo, misconfiguration, etc.). Should the client if configured use its own default DoH or not?\r\n- the empty URI - the client to interpret this a request NOT to use DoH at all",
+          "createdAt": "2019-08-01T00:15:59Z",
+          "updatedAt": "2019-08-01T00:15:59Z"
+        },
+        {
+          "author": "DavidSchinazi",
+          "authorAssociation": "OWNER",
+          "body": "I think the DoH URI not resolving should be treated similarly to any query failure: the client then falls back to whichever DNS mechanism it would have used in the absence of this header. But making that explicit in the document sounds like a good idea.",
+          "createdAt": "2019-08-01T00:29:06Z",
+          "updatedAt": "2019-08-01T00:29:06Z"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "id": "MDU6SXNzdWU1NzA3OTg3Mzc=",
+      "title": "DoH-Preference should be a structured header",
+      "url": "https://github.com/DavidSchinazi/draft-httpbis-doh-preference-hints/issues/5",
+      "state": "OPEN",
+      "author": "DavidSchinazi",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Since HTTP Structured Headers ([draft-ietf-httpbis-header-structure](https://tools.ietf.org/html/draft-ietf-httpbis-header-structure)) are nearing publication, we should turn `DoH-Preference` into an Item Structured Header.",
+      "createdAt": "2020-02-25T20:00:19Z",
+      "updatedAt": "2020-02-25T20:00:19Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
+  "pulls": [
+    {
+      "number": 1,
+      "id": "MDExOlB1bGxSZXF1ZXN0Mjg1OTQ3MTQx",
+      "title": "Add privacy comment to security considerations.",
+      "url": "https://github.com/DavidSchinazi/draft-httpbis-doh-preference-hints/pull/1",
+      "state": "MERGED",
+      "author": "jtkipp",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2019-06-06T19:56:20Z",
+      "updatedAt": "2019-06-07T17:46:03Z",
+      "baseRepository": "DavidSchinazi/draft-httpbis-doh-preference-hints",
+      "baseRefName": "master",
+      "baseRefOid": "83a0eb0ec218e2c0123547ecdf0846c7c94dee2c",
+      "headRepository": "DavidSchinazi/draft-httpbis-doh-preference-hints",
+      "headRefName": "jtkipp/privacy",
+      "headRefOid": "d0dc90078c6eec8b59fd5e0d5af305ab0600dd68",
+      "closedAt": "2019-06-07T17:46:03Z",
+      "mergedAt": "2019-06-07T17:46:03Z",
+      "mergedBy": "jtkipp",
+      "mergeCommit": {
+        "oid": "404989e2f2d1c999954bb3bd115c474cab9a10b2"
+      },
+      "comments": [
+        {
+          "author": "jtkipp",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Fixed wording of last sentence.",
+          "createdAt": "2019-06-07T17:45:39Z",
+          "updatedAt": "2019-06-07T17:45:48Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MjQ2OTY1NjAx",
+          "commit": {
+            "abbreviatedOid": "1265240"
+          },
+          "author": "DavidSchinazi",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "Looks good! I'd rephrase the last sentence since I don't think `unless the URIs are reference` is correct",
+          "createdAt": "2019-06-07T08:15:09Z",
+          "updatedAt": "2019-06-07T08:15:09Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "id": "MDExOlB1bGxSZXF1ZXN0MjkwMjg2MzE5",
+      "title": "Add loop comment and server choice considerations",
+      "url": "https://github.com/DavidSchinazi/draft-httpbis-doh-preference-hints/pull/2",
+      "state": "MERGED",
+      "author": "jtkipp",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2019-06-20T16:18:27Z",
+      "updatedAt": "2019-07-03T22:56:53Z",
+      "baseRepository": "DavidSchinazi/draft-httpbis-doh-preference-hints",
+      "baseRefName": "master",
+      "baseRefOid": "d0dc90078c6eec8b59fd5e0d5af305ab0600dd68",
+      "headRepository": "DavidSchinazi/draft-httpbis-doh-preference-hints",
+      "headRefName": "jkipp/server-choice-considerations",
+      "headRefOid": "a6db3a4b7489e4f8e9a0b54b1659935cfe09cfd3",
+      "closedAt": "2019-07-03T22:56:53Z",
+      "mergedAt": "2019-07-03T22:56:53Z",
+      "mergedBy": "jtkipp",
+      "mergeCommit": {
+        "oid": "51b54405734f227fa5f455b6f592349798aff6b5"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MjUyNDA4OTQz",
+          "commit": {
+            "abbreviatedOid": "cd4f8e3"
+          },
+          "author": "DavidSchinazi",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "Looks good! Mostly nits and one question about IP address certs.",
+          "createdAt": "2019-06-20T16:47:09Z",
+          "updatedAt": "2019-06-20T16:51:53Z",
+          "comments": [
+            {
+              "originalPosition": 10,
+              "body": "Since a DoH server needs a TLS certificate, doesn't it need a host name? I forgot what the current status of IP address TLS certs are...",
+              "createdAt": "2019-06-20T16:47:09Z",
+              "updatedAt": "2019-07-03T13:34:54Z"
+            },
+            {
+              "originalPosition": 13,
+              "body": "nit: missing dot at end of line",
+              "createdAt": "2019-06-20T16:47:49Z",
+              "updatedAt": "2019-07-03T13:34:54Z"
+            },
+            {
+              "originalPosition": 16,
+              "body": "missing word: could result *in* diverting",
+              "createdAt": "2019-06-20T16:48:33Z",
+              "updatedAt": "2019-07-03T13:34:54Z"
+            },
+            {
+              "originalPosition": 17,
+              "body": "The number of DNS requests is not really proportional to the amount of HTTP traffic when TTLs are high. And I'm not sure how one can act on this consideration?",
+              "createdAt": "2019-06-20T16:50:14Z",
+              "updatedAt": "2019-07-03T13:34:54Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MjUyNTI4OTY5",
+          "commit": {
+            "abbreviatedOid": "cd4f8e3"
+          },
+          "author": "grittygrease",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-06-20T20:42:48Z",
+          "updatedAt": "2019-06-20T20:42:48Z",
+          "comments": [
+            {
+              "originalPosition": 10,
+              "body": "IP address TLS certs are fine and permitted. https://1.1.1.1, for example",
+              "createdAt": "2019-06-20T20:42:48Z",
+              "updatedAt": "2019-07-03T13:34:54Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MjUyNTMxMzM3",
+          "commit": {
+            "abbreviatedOid": "cd4f8e3"
+          },
+          "author": "DavidSchinazi",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-06-20T20:48:06Z",
+          "updatedAt": "2019-06-20T20:48:06Z",
+          "comments": [
+            {
+              "originalPosition": 10,
+              "body": "Thanks @grittygrease ",
+              "createdAt": "2019-06-20T20:48:06Z",
+              "updatedAt": "2019-07-03T13:34:54Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MjUyNTM0Nzg1",
+          "commit": {
+            "abbreviatedOid": "cd4f8e3"
+          },
+          "author": "grittygrease",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-06-20T20:55:51Z",
+          "updatedAt": "2019-06-20T20:55:51Z",
+          "comments": [
+            {
+              "originalPosition": 32,
+              "body": "And for query failures, we fall back to native DNS, correct?",
+              "createdAt": "2019-06-20T20:55:51Z",
+              "updatedAt": "2019-07-03T13:34:54Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MjU3NDkwNDcy",
+          "commit": {
+            "abbreviatedOid": "a6db3a4"
+          },
+          "author": "jtkipp",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-07-03T13:35:36Z",
+          "updatedAt": "2019-07-03T13:35:36Z",
+          "comments": [
+            {
+              "originalPosition": 32,
+              "body": "Yes, this is indicated elsewhere in the document, I was trying to mimic that language so that would be clear.",
+              "createdAt": "2019-07-03T13:35:36Z",
+              "updatedAt": "2019-07-03T13:35:36Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MjU3NDkwNzc1",
+          "commit": {
+            "abbreviatedOid": "a6db3a4"
+          },
+          "author": "jtkipp",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-07-03T13:36:04Z",
+          "updatedAt": "2019-07-03T13:36:05Z",
+          "comments": [
+            {
+              "originalPosition": 17,
+              "body": "Indeed. for this and other reasons that occured to me this since, the thing I was thinking about didn't make sense. Removed this for now.",
+              "createdAt": "2019-07-03T13:36:04Z",
+              "updatedAt": "2019-07-03T13:36:05Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MjU3NDkwOTU4",
+          "commit": {
+            "abbreviatedOid": "a6db3a4"
+          },
+          "author": "jtkipp",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-07-03T13:36:20Z",
+          "updatedAt": "2019-07-03T13:36:21Z",
+          "comments": [
+            {
+              "originalPosition": 16,
+              "body": "Ended up removing this.",
+              "createdAt": "2019-07-03T13:36:21Z",
+              "updatedAt": "2019-07-03T13:36:21Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MjU3NDkxMDEy",
+          "commit": {
+            "abbreviatedOid": "a6db3a4"
+          },
+          "author": "jtkipp",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2019-07-03T13:36:25Z",
+          "updatedAt": "2019-07-03T13:36:25Z",
+          "comments": [
+            {
+              "originalPosition": 13,
+              "body": "Fixed.",
+              "createdAt": "2019-07-03T13:36:25Z",
+              "updatedAt": "2019-07-03T13:36:25Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MjU3NzU1MjUy",
+          "commit": {
+            "abbreviatedOid": "a6db3a4"
+          },
+          "author": "DavidSchinazi",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "Looks good!",
+          "createdAt": "2019-07-03T22:05:34Z",
+          "updatedAt": "2019-07-03T22:05:34Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "id": "MDExOlB1bGxSZXF1ZXN0Mjk0Mjc5MDkw",
+      "title": "Nick/discovery",
+      "url": "https://github.com/DavidSchinazi/draft-httpbis-doh-preference-hints/pull/3",
+      "state": "MERGED",
+      "author": "grittygrease",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Text in intro to highlight goals.",
+      "createdAt": "2019-07-03T18:15:05Z",
+      "updatedAt": "2019-07-08T17:11:07Z",
+      "baseRepository": "DavidSchinazi/draft-httpbis-doh-preference-hints",
+      "baseRefName": "master",
+      "baseRefOid": "d0dc90078c6eec8b59fd5e0d5af305ab0600dd68",
+      "headRepository": "DavidSchinazi/draft-httpbis-doh-preference-hints",
+      "headRefName": "nick/discovery",
+      "headRefOid": "084459a2b1c1e4c354170a9e0d699b54a6c470a8",
+      "closedAt": "2019-07-08T17:11:07Z",
+      "mergedAt": "2019-07-08T17:11:07Z",
+      "mergedBy": "DavidSchinazi",
+      "mergeCommit": {
+        "oid": "14015bd4593fce7155713dc87679e1fc5bf089db"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MjU3NjYyMTM5",
+          "commit": {
+            "abbreviatedOid": "084459a"
+          },
+          "author": "jkipp-cloudflare",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2019-07-03T18:20:03Z",
+          "updatedAt": "2019-07-03T18:20:03Z",
+          "comments": []
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3MjU3NzU1NTc0",
+          "commit": {
+            "abbreviatedOid": "084459a"
+          },
+          "author": "DavidSchinazi",
+          "authorAssociation": "OWNER",
+          "state": "APPROVED",
+          "body": "Thanks, looks good!",
+          "createdAt": "2019-07-03T22:06:44Z",
+          "updatedAt": "2019-07-03T22:06:44Z",
+          "comments": []
+        }
+      ]
+    }
+  ]
+}
