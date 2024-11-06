@@ -1,0 +1,3 @@
+# Automatically generated CODEOWNERS
+# Regenerate with `make update-codeowners`
+draft-schinazi-httpbis-doh-preference-hints.md dschinazi.ietf@gmail.com nick@cloudflare.com jkipp@cloudflare.com
