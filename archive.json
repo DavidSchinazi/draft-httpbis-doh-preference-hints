@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2020-07-14T00:15:21.112997+00:00",
+  "timestamp": "2024-11-07T00:44:45.289498+00:00",
   "repo": "DavidSchinazi/draft-httpbis-doh-preference-hints",
   "labels": [
     {
@@ -19,14 +19,14 @@
       "color": "a2eeef"
     },
     {
-      "name": "help wanted",
-      "description": "Extra attention is needed",
-      "color": "008672"
-    },
-    {
       "name": "good first issue",
       "description": "Good for newcomers",
       "color": "7057ff"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
     },
     {
       "name": "invalid",
